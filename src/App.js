@@ -7,7 +7,10 @@ function App() {
     //for =htmlFor
     //tabindex = tabIndex
     <>
-      <Navbar title="TextUtils2" aboutText="About Textutils"/>
+      <Navbar title="TextUtils" aboutText="About Textutils"/>
+      {/* <Navbar title = "TextUtils"/> */}
+      {/* <Navbar/> */}
+
     </>
   );
 }
