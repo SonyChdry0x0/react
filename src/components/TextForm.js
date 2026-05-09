@@ -11,7 +11,8 @@ export default function TextForm(props) {
     }
 
    // text="new text"; //wrong way to change the state
-    //setText("new text"); //correct way to change the state
+    //setText("new text"); //correct way to change the state . 
+    //
     
   return (
     <div>
