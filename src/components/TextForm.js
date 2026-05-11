@@ -2,19 +2,30 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    console.log("uppercase was clicked" + text);
+    // console.log("uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
   };
-  const handleOnClick = () => {
-    console.log("lowercase was clicked" + text);
+  const handleLoClick = () => {
+    // console.log("lowercase was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
   };
+  const handleCapClick = () => {
+    // console.log("On change");
+     let newText = text.split(" ").map(word=>word.charAt(0).toUpperCase() +word.slice(1)).join(" ");
+    setText(newText);
+  };
+  const handleClearClick = () => {
+    // console.log("On change");
+     let newText = " ";
+    setText(newText);
+  };
   const handleOnChange = (event) => {
-    console.log("On change");
+    // console.log("On change");
     setText(event.target.value);
   };
+  
 
   const [text, setText] = useState("");
   // text="new text"; //wrong way to change the state
@@ -34,14 +45,16 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
           Convert to UpperCase
         </button>
-        <button className="btn btn-primary mx-3" onClick={handleOnClick}>
-          {" "}
-          covert to lowercase
-        </button>
+        <button className="btn btn-primary mx-2" onClick={handleLoClick}>covert to lowercase</button>
+        <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+
+        <button className="btn btn-primary mx-2" onClick={handleCapClick}>Captalized Case</button>
+        
       </div>
+      
        <div className="container my-3">
         <h2>Your Text Summary</h2>
         <p>
