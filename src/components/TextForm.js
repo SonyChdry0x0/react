@@ -13,25 +13,36 @@ export default function TextForm(props) {
   };
   const handleCapClick = () => {
     // console.log("On change");
-     let newText = text.split(" ").map(word=>word.charAt(0).toUpperCase() +word.slice(1)).join(" ");
+    let newText = text
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
     setText(newText);
   };
   const handleClearClick = () => {
-    // console.log("On change");
-     let newText = " ";
+    // console.log("On clear");
+    let newText = " ";
     setText(newText);
   };
+  const handleCopy = () => {
+    //console.log("copy the text")
+    var text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+  const handleExtraSpaces = () => {
+    // console.log("remove the extra spaces")
+    let newText = text.split(/\s+/);
+    setText(newText.join(" "));
+  };
+
   const handleOnChange = (event) => {
     // console.log("On change");
     setText(event.target.value);
   };
-  
-
   const [text, setText] = useState("");
   // text="new text"; //wrong way to change the state
   //setText("new text"); //correct way to change the state .
-  //
-
   return (
     <>
       <div className="container">
@@ -48,14 +59,25 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-2" onClick={handleUpClick}>
           Convert to UpperCase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>covert to lowercase</button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+          covert to lowercase
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+          Clear Text
+        </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleCapClick}>Captalized Case</button>
-        
+        <button className="btn btn-primary mx-2" onClick={handleCapClick}>
+          Captalized Case
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+          Copy Btn
+        </button>
+        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+          Remove Extra Spaces
+        </button>
       </div>
-      
-       <div className="container my-3">
+
+      <div className="container my-3">
         <h2>Your Text Summary</h2>
         <p>
           {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} words and{" "}
