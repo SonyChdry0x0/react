@@ -45,13 +45,18 @@ export default function TextForm(props) {
   //setText("new text"); //correct way to change the state .
   return (
     <>
-      <div className="container">
+      <div className="container" style={{color:props.mode ==='dark'?"white":"#042743"}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
             value={text}
             onChange={handleOnChange}
+            style={{backgroundColor:props.mode ==='dark'?"#042743":"white",
+                    color:props.mode ==='dark'?"white":"#042743"
+
+            }
+          }
             id="myBox"
             rows="8"
           ></textarea>
@@ -77,7 +82,7 @@ export default function TextForm(props) {
         </button>
       </div>
 
-      <div className="container my-3">
+      <div className="container my-3" style={{color:props.mode ==='dark'?"white":"#042743"}}>
         <h2>Your Text Summary</h2>
         <p>
           {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} words and{" "}
@@ -88,7 +93,7 @@ export default function TextForm(props) {
           Minutes read
         </p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "enter something in the text above"}</p>
+        <p>{text.length > 0 ? text : "Enter Something in the text above"}</p>
       </div>
     </>
   );
