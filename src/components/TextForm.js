@@ -5,11 +5,13 @@ export default function TextForm(props) {
     // console.log("uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("converted to uppercase","success");
   };
   const handleLoClick = () => {
     // console.log("lowercase was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("converted to lowercase","success");
   };
   const handleCapClick = () => {
     // console.log("On change");
@@ -18,22 +20,26 @@ export default function TextForm(props) {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     setText(newText);
+    props.showAlert("capitalized the first letter of word","success");
   };
   const handleClearClick = () => {
     // console.log("On clear");
     let newText = " ";
     setText(newText);
+    props.showAlert("clear the text","success");
   };
   const handleCopy = () => {
     //console.log("copy the text")
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("copy the text","success");
   };
   const handleExtraSpaces = () => {
     // console.log("remove the extra spaces")
     let newText = text.split(/\s+/);
     setText(newText.join(" "));
+    props.showAlert("Remove the extra spaces","success");
   };
 
   const handleOnChange = (event) => {
@@ -52,7 +58,7 @@ export default function TextForm(props) {
             className="form-control"
             value={text}
             onChange={handleOnChange}
-            style={{backgroundColor:props.mode ==='dark'?"#042743":"white",
+            style={{backgroundColor:props.mode ==='dark'?"gray":"white",
                     color:props.mode ==='dark'?"white":"#042743"
 
             }
