@@ -45,10 +45,12 @@ export default function Navbar(props) {
               Search
             </button>
           </form> */}
-          <div className={`form-check form-switch text-${props.mode ==="light"?"dark":"light"}`}>
+          <div
+            className={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"}`}
+          >
             <input
               className="form-check-input"
-              onClick={props.toggleMode} 
+              onClick={props.toggleMode}
               type="checkbox"
               role="switch"
               id="switchCheckDefault"
@@ -56,6 +58,43 @@ export default function Navbar(props) {
             <label className="form-check-label" htmlFor="switchCheckDefault">
               Enable dark mode
             </label>
+          </div>
+          <div>
+            <button
+              type="button"
+              className="btn btn-danger m-2"
+              style={{ backgroundColor: props.themeColor, color: "white" }}
+              onClick={() => props.changeColor("#be7079","red")}
+            >
+              Red
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-success m-2"
+              style={{ backgroundColor: props.themeColor, color: "white" }}
+              onClick={() => props.changeColor("#1a4933","Green")}
+            >
+              Green
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-primary m-2"
+              style={{ backgroundColor: props.themeColor, color: "white" }}
+              onClick={() => props.changeColor("#424141", "Blue")}
+            >
+              gray
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-info m-2"
+              style={{ backgroundColor: props.themeColor, color: "white" }}
+              onClick={() => props.changeColor("#84cdea", "sky")}
+            >
+              Sky
+            </button>
           </div>
         </div>
       </div>

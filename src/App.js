@@ -18,7 +18,15 @@ function App() {
     
   }, 1500);
   }
-  
+ const [themeColor, setThemeColor] = useState("#0d6efd");
+
+const changeColor = (color, name) => {
+  if (mode === "dark") {
+    document.body.style.backgroundColor = color;
+    setThemeColor(color);
+    showAlert(name + " theme enabled", "success");
+  }
+};
 
   const toggleMode = () => {
     if (mode === "light") {
@@ -37,12 +45,17 @@ function App() {
     //for =htmlFor
     //tabindex = tabIndex
     <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}  changeColor={changeColor} />
       <Alert alert={alert}/>
       {/* <Navbar title = "TextUtils"/> */}
       {/* <Navbar/> */}
       <div className="container my-3">
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode} />
+        <TextForm
+  showAlert={showAlert}
+  heading="Enter the text to analyze"
+  mode={mode}
+  themeColor={themeColor}
+/>
         {/* <About/> */}
       </div>
     </>
