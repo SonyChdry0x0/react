@@ -7,37 +7,41 @@ import Alert from "./components/Alert";
 function App() {
   const [mode, setMode] = useState("light");
 
-  const[alert,setAlert]=useState(null);
-  const showAlert = (message,type)=>{
-    setAlert ({
-      msg:message,
-      type:type
-    })
+  const [alert, setAlert] = useState(null);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
     setTimeout(() => {
       setAlert(null);
-    
-  }, 1500);
-  }
- const [themeColor, setThemeColor] = useState("#0d6efd");
+    }, 1500);
+  };
+  const [themeColor, setThemeColor] = useState("#0d6efd");
 
-const changeColor = (color, name) => {
-  if (mode === "dark") {
-    document.body.style.backgroundColor = color;
-    setThemeColor(color);
-    showAlert(name + " theme enabled", "success");
-  }
-};
+  const changeColor = (color, name) => {
+    if (mode === "dark") {
+      document.body.style.backgroundColor = color;
+      setThemeColor(color);
+      showAlert(name + " theme enabled", "success");
+    }
+  };
 
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
-      document.body.style.backgroundColor="#042743";
-      showAlert("Dark mode has been enabled","success")
-      
+      document.body.style.backgroundColor = "#042743";
+      showAlert("Dark mode has been enabled", "success");
+      setInterval(() => {
+        document.title = "Textutils is amazing mode";
+      }, 2000);
+      setInterval(() => {
+        document.title = "Install Textutils Now";
+      }, 1500);
     } else {
       setMode("light");
-      document.body.style.backgroundColor="white";
-      showAlert("light mode has been enabled","success")
+      document.body.style.backgroundColor = "white";
+      showAlert("light mode has been enabled", "success");
     }
   };
   return (
@@ -45,17 +49,22 @@ const changeColor = (color, name) => {
     //for =htmlFor
     //tabindex = tabIndex
     <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}  changeColor={changeColor} />
-      <Alert alert={alert}/>
+      <Navbar
+        title="TextUtils"
+        mode={mode}
+        toggleMode={toggleMode}
+        changeColor={changeColor}
+      />
+      <Alert alert={alert} />
       {/* <Navbar title = "TextUtils"/> */}
       {/* <Navbar/> */}
       <div className="container my-3">
         <TextForm
-  showAlert={showAlert}
-  heading="Enter the text to analyze"
-  mode={mode}
-  themeColor={themeColor}
-/>
+          showAlert={showAlert}
+          heading="Enter the text to analyze"
+          mode={mode}
+          themeColor={themeColor}
+        />
         {/* <About/> */}
       </div>
     </>

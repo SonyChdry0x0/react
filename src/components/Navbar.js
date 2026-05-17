@@ -82,7 +82,7 @@ export default function Navbar(props) {
               type="button"
               className="btn btn-primary m-2"
               style={{ backgroundColor: props.themeColor, color: "white" }}
-              onClick={() => props.changeColor("#424141", "Blue")}
+              onClick={() => props.changeColor("blue", "Blue")}
             >
               gray
             </button>
