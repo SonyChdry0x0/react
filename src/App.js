@@ -20,6 +20,8 @@ function App() {
   };
   const [themeColor, setThemeColor] = useState("#0d6efd");
 
+  
+
   const changeColor = (color, name) => {
     if (mode === "dark") {
       document.body.style.backgroundColor = color;
@@ -43,6 +45,7 @@ function App() {
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
+      setThemeColor("#0d6efd"); 
       showAlert("light mode has been enabled", "success");
       //document.title='TextUtils-Light mode';
     }
@@ -60,6 +63,8 @@ function App() {
         mode={mode}
         toggleMode={toggleMode}
         changeColor={changeColor}
+        themeColor={themeColor}
+        
       />
       <Alert alert={alert} />
       {/* <Navbar title = "TextUtils"/> */}

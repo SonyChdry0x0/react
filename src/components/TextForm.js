@@ -29,10 +29,8 @@ export default function TextForm(props) {
     props.showAlert("clear the text", "success");
   };
   const handleCopy = () => {
-    //console.log("copy the text")
-    var text = document.getElementById("myBox");
-    
-    navigator.clipboard.writeText(text.value);
+    //console.log("copy the text")  
+    navigator.clipboard.writeText(text);
     props.showAlert("copy the text", "success");
   };
   const handleExtraSpaces = () => {
@@ -46,6 +44,10 @@ export default function TextForm(props) {
     // console.log("On change");
     setText(event.target.value);
   };
+  const btnStyle={
+    backgroundColor:props.themeColor,
+    color:"white"
+  }
   const [text, setText] = useState("");
   // text="new text"; //wrong way to change the state
   //setText("new text"); //correct way to change the state .
@@ -62,7 +64,7 @@ export default function TextForm(props) {
             value={text}
             onChange={handleOnChange}
             style={{
-              backgroundColor: props.mode === "dark" ? "#284760" : "white",
+              backgroundColor: props.mode === "dark" ? props.themeColor  : "white",
               color: props.mode === "dark" ? "white" : "#042743",
             }}
             id="myBox"
@@ -72,10 +74,7 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn mx-2 my-1"
-          style={{
-            backgroundColor: props.themeColor,
-            color: "white",
-          }}
+          style={btnStyle}
           onClick={handleUpClick}
         >
           Convert to UpperCase
@@ -84,10 +83,7 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn mx-2 my-1"
-          style={{
-            backgroundColor: props.themeColor,
-            color: "white",
-          }}
+          style={btnStyle}
           onClick={handleLoClick}
         >
           Convert to lowercase
@@ -96,10 +92,7 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn mx-2 my-1"
-          style={{
-            backgroundColor: props.themeColor,
-            color: "white",
-          }}
+          style={btnStyle}
           onClick={handleClearClick}
         >
           Clear Text
@@ -108,10 +101,7 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn mx-2 my-1"
-          style={{
-            backgroundColor: props.themeColor,
-            color: "white",
-          }}
+          style={btnStyle}
           onClick={handleCapClick}
         >
           Capitalize Case
@@ -120,10 +110,7 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn mx-2 my-1"
-          style={{
-            backgroundColor: props.themeColor,
-            color: "white",
-          }}
+          style={btnStyle}
           onClick={handleCopy}
         >
           Copy
@@ -132,10 +119,7 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn mx-2 my-1"
-          style={{
-            backgroundColor: props.themeColor,
-            color: "white",
-          }}
+          style={btnStyle}
           onClick={handleExtraSpaces}
         >
           Remove Spaces
@@ -151,7 +135,7 @@ export default function TextForm(props) {
           {/* {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} words and{" "}
           {text.length} characters */}
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
@@ -161,9 +145,9 @@ export default function TextForm(props) {
           {/* {0.008 * (text.trim() === "" ? 0 : text.trim().split(/\s+/).length)}{" "}
           Minutes read */}
           {0.008 *
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
-            }).length}
+            }).length}{" "}
           Minutes read
         </p>
         <h2>Preview</h2>

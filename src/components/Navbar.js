@@ -30,7 +30,7 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link " aria-current="page" to="/">
                 Home
               </Link>
               {/* <a className="nav-link active" aria-current="page" href="#">
@@ -48,17 +48,7 @@ export default function Navbar(props) {
               </a> */}
             </li>
           </ul>
-          {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-primary" type="submit">
-              Search
-            </button>
-          </form> */}
+          
           <div
             className={`form-check form-switch text-${props.mode === "light" ? "dark" : "light"}`}
           >
@@ -77,7 +67,7 @@ export default function Navbar(props) {
             <button
               type="button"
               className="btn btn-danger m-2"
-              style={{ backgroundColor: props.themeColor, color: "white" }}
+              style={{ color: "white" }}
               onClick={() => props.changeColor("#be7079", "red")}
             >
               Red
@@ -86,7 +76,7 @@ export default function Navbar(props) {
             <button
               type="button"
               className="btn btn-success m-2"
-              style={{ backgroundColor: props.themeColor, color: "white" }}
+              style={{  color: "white" }}
               onClick={() => props.changeColor("#1a4933", "Green")}
             >
               Green
@@ -95,17 +85,17 @@ export default function Navbar(props) {
             <button
               type="button"
               className="btn btn-primary m-2"
-              style={{ backgroundColor: props.themeColor, color: "white" }}
+              style={{  color: "white" }}
               onClick={() => props.changeColor("blue", "Blue")}
             >
-              gray
+              Blue
             </button>
 
             <button
               type="button"
               className="btn btn-info m-2"
-              style={{ backgroundColor: props.themeColor, color: "white" }}
-              onClick={() => props.changeColor("#84cdea", "sky")}
+              style={{ color: "white" }}
+              onClick={() => props.changeColor("#35b7eb", "sky")}
             >
               Sky
             </button>
