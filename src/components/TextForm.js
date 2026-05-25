@@ -31,7 +31,7 @@ export default function TextForm(props) {
   const handleCopy = () => {
     //console.log("copy the text")
     var text = document.getElementById("myBox");
-    text.select();
+    
     navigator.clipboard.writeText(text.value);
     props.showAlert("copy the text", "success");
   };
@@ -55,14 +55,14 @@ export default function TextForm(props) {
         className="container"
         style={{ color: props.mode === "dark" ? "white" : "#042743" }}
       >
-        <h1>{props.heading}</h1>
+        <h1 className="mb-4">{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
             value={text}
             onChange={handleOnChange}
             style={{
-              backgroundColor: props.mode === "dark" ? "gray" : "white",
+              backgroundColor: props.mode === "dark" ? "#284760" : "white",
               color: props.mode === "dark" ? "white" : "#042743",
             }}
             id="myBox"
@@ -70,66 +70,72 @@ export default function TextForm(props) {
           ></textarea>
         </div>
         <button
-          className="btn mx-2"
+          disabled={text.length === 0}
+          className="btn mx-2 my-1"
           style={{
-  backgroundColor: props.themeColor,
-  color: "white"
-}}
+            backgroundColor: props.themeColor,
+            color: "white",
+          }}
           onClick={handleUpClick}
         >
           Convert to UpperCase
         </button>
 
         <button
-          className="btn mx-2"
+          disabled={text.length === 0}
+          className="btn mx-2 my-1"
           style={{
-  backgroundColor: props.themeColor,
-  color: "white"
-}}
+            backgroundColor: props.themeColor,
+            color: "white",
+          }}
           onClick={handleLoClick}
         >
           Convert to lowercase
         </button>
 
         <button
-          className="btn mx-2"
-         style={{
-  backgroundColor: props.themeColor,
-  color: "white"
-}}
+          disabled={text.length === 0}
+          className="btn mx-2 my-1"
+          style={{
+            backgroundColor: props.themeColor,
+            color: "white",
+          }}
           onClick={handleClearClick}
         >
           Clear Text
         </button>
 
         <button
-          className="btn mx-2"
+          disabled={text.length === 0}
+          className="btn mx-2 my-1"
           style={{
-  backgroundColor: props.themeColor,
-  color: "white"
-}}
+            backgroundColor: props.themeColor,
+            color: "white",
+          }}
           onClick={handleCapClick}
         >
           Capitalize Case
         </button>
 
         <button
-          className="btn mx-2"
+          disabled={text.length === 0}
+          className="btn mx-2 my-1"
           style={{
-  backgroundColor: props.themeColor,
-  color: "white"
-}}
+            backgroundColor: props.themeColor,
+            color: "white",
+          }}
           onClick={handleCopy}
         >
           Copy
         </button>
 
         <button
-          className="btn mx-2"
+          disabled={text.length === 0}
+          className="btn mx-2 my-1"
           style={{
-  backgroundColor: props.themeColor,
-  color: "white"
-}}
+            backgroundColor: props.themeColor,
+            color: "white",
+          }}
           onClick={handleExtraSpaces}
         >
           Remove Spaces
@@ -142,15 +148,26 @@ export default function TextForm(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} words and{" "}
-          {text.length} characters
+          {/* {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} words and{" "}
+          {text.length} characters */}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
         </p>
         <p>
-          {0.008 * (text.trim() === "" ? 0 : text.trim().split(/\s+/).length)}{" "}
+          {/* {0.008 * (text.trim() === "" ? 0 : text.trim().split(/\s+/).length)}{" "}
+          Minutes read */}
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}
           Minutes read
         </p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter Something in the text above"}</p>
+        <p>{text.length > 0 ? text : "nothing to priview!"}</p>
       </div>
     </>
   );
